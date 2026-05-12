@@ -23,6 +23,25 @@
       padding: 0;
     }
 
+    .area-header {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 16px 16px 12px;
+      background: #fff;
+      display: none;
+    }
+
+    .area-header .area-tag {
+      display: inline-block;
+      padding: 6px 14px;
+      background: #e8f5e9;
+      color: #2e7d32;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
     .manga-container img {
       display: block;
       width: 100%;
@@ -83,6 +102,9 @@
 </head>
 <body>
   <div class="wrapper">
+    <div class="area-header" id="areaHeader">
+      <span class="area-tag" id="areaTag"></span>
+    </div>
     <div class="manga-container">
       <img src="images/panel_01.png?v=3" alt="Panel 1" loading="eager">
       <img src="images/panel_02.png?v=3" alt="Panel 2" loading="eager">
@@ -132,5 +154,18 @@
       <p class="cta-sub">※査定額は参考値です。売却を強制するものではありません。</p>
     </div>
   </div>
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var area = params.get('area');
+      if (area) {
+        var header = document.getElementById('areaHeader');
+        var tag = document.getElementById('areaTag');
+        tag.textContent = area + 'エリアの不動産査定';
+        header.style.display = 'block';
+        document.title = area + 'の不動産査定｜おうちクラベル';
+      }
+    })();
+  </script>
 </body>
 </html>
